@@ -1,17 +1,14 @@
 import sbt.Keys.{libraryDependencies, _}
 
-// If you edit it then in sbt type 'reload' and 'update'
-
-// scoverage
-resolvers += Resolver.url("scoverage-bintray", url("https://dl.bintray.com/sksamual/sbt-plugins/"))(Resolver.ivyStylePatterns)
+scalacOptions := Seq("-unchecked", "-deprecation")
 
 // Multi project build file.  For val xxx = project, xxx is the name of the project and base dir
 lazy val commonSettings = Seq(
 	organization := "org.sackfix",
 	version := "0.1.0",
-	scalaVersion := "2.11.7",
-	libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.1" % "test",
-	libraryDependencies += "com.typesafe" % "config" % "1.3.0"
+	scalaVersion := "2.12.6",
+	libraryDependencies += "org.scalatest" %% "scalatest" % "3.0.5" % "test",
+	libraryDependencies += "com.typesafe" % "config" % "1.3.3"
 //	coverageEnabled := true
 )
 
@@ -26,9 +23,9 @@ lazy val sackfixcodegen = (project in file("./sackfix-codegen")).
 	settings(commonSettings: _*).
 	settings(
 		name := "sackfix-codegen",
-  	libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "1.0.3",
-		libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "1.0.3",
-		libraryDependencies += "org.scala-lang.modules" %% "scala-swing" % "1.0.1"
+  	libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "1.1.0",
+		libraryDependencies += "org.scala-lang.modules" %% "scala-parser-combinators" % "1.1.1",
+		libraryDependencies += "org.scala-lang.modules" %% "scala-swing" % "2.0.3"
 	)
 
 val sackfix = (project in file(".")).aggregate(sackfixcommon, sackfixcodegen)
