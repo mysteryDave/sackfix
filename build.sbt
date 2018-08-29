@@ -1,7 +1,5 @@
 import sbt.Keys.{libraryDependencies, _}
 
-scalacOptions := Seq("-unchecked", "-deprecation")
-
 // Multi project build file.  For val xxx = project, xxx is the name of the project and base dir
 lazy val commonSettings = Seq(
 	organization := "org.sackfix",
